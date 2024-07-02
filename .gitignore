@@ -1,0 +1,14 @@
+.idea
+.vscode
+*.venv
+logs
+*.log
+*.lock
+*__pycache__
+*.vscode
+0*
+*.idea
+/api/db.py
+
+# Secrets
+*secret.py
