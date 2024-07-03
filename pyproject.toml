@@ -30,6 +30,8 @@ uvicorn = "^0.24.0.post1"
 django-graphql-jwt = "^0.4.0"
 whitenoise = "^6.6.0"
 gunicorn = "^21.2.0"
+graphene-django-query-optimizer = "^0.8.4"
+psycopg = {extras = ["binary"], version = "^3.2.1"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
