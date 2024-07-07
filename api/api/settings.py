@@ -16,6 +16,7 @@ import datetime as dt
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 current_time = str(dt.datetime.now().strftime("%H"))
 current_date = str(dt.date.today())
 file_name = current_time + "H_Uvicorns.log"
