@@ -9,5 +9,4 @@ def open_image_from_url(url: str):
     img_array = np.array(
         bytearray(img_data), dtype=np.uint8
     )  # Conversion de l'image en un tableau numpy
-    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)  # Décodage de l'image
-    return img
+    return cv2.imdecode(img_array, cv2.IMREAD_COLOR)  # Décodage de l'image
