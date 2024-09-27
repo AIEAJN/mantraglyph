@@ -1,8 +1,8 @@
 services:
-  mantraglyph-backend:
-    image: mantraglyph-backend
+  mantraglyph:
+    image: mantraglyph
     restart: unless-stopped
-    container_name: mantraglyph-backend
+    container_name: mantraglyph
     build:
       context: .
       dockerfile: ./Dockerfile

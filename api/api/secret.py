@@ -1,0 +1,10 @@
+DATABASE_ENGINE = "django.db.backends.postgresql_psycopg2"
+DATABASE_NAME = "mantraglyph"
+DATABASE_USER = "postgres"
+DATABASE_PASSWORD = "C0j4e211^ACq"
+DATABASE_HOST = "localhost"
+DATABASE_PORT = "5432"
+DEBUG_MODE = True
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "10.0.2.2"]  # your allowed hosts, 10.0.2.2 for mobile apps
+ALLOWED_CIDR_NETS = ['10.0.2.0/24'] # for mobile apps
+GRAPHIQL_MODE = True

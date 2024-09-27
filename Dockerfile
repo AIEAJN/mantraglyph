@@ -1,16 +1,16 @@
-FROM python:3.11-slim-buster
+FROM python:3.12.6-slim
 
 # Mettre à jour le système et installer les dépendances nécessaires
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
     git \
+    tesseract-ocr \
     wget \
     unzip \
     yasm \
     pkg-config \
     libswscale-dev \
-    libtbb2 \
     libtbb-dev \
     libjpeg-dev \
     libpng-dev \
@@ -19,19 +19,20 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Mettre à jour pip
-RUN pip install --no-cache-dir --upgrade pip
-
+# Upgrade pip
+RUN python -m pip install --upgrade pip \
+    && pip install poetry
+    
+ENV PATH="/usr/bin:$PATH"
 WORKDIR /app
+
 # copy the project into the docker container
 COPY . .
 
-RUN pip install poetry \
-    && poetry install --only main
-
-
-# Set permissions to scripts.sh
-RUN chmod +x ./scp.sh
+# Set permissions to entrypoint.sh
+RUN chmod +x ./entrypoint.sh
 
 # Define the entrypoint
-ENTRYPOINT ["./scp.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
+
+
