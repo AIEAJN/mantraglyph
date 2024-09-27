@@ -1,0 +1,19 @@
+services:
+  mantraglyph-backend:
+    image: mantraglyph-backend
+    restart: unless-stopped
+    container_name: mantraglyph-backend
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - static:/var/www/mantraglyph/static
+      - ./:/app
+      - migrations:/app/api/mantraglyph/migrations  # Migrations volume for data persitence
+    
+    ports:
+      - 7002:7002
+
+volumes:
+  static:
+  migrations:
