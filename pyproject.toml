@@ -9,6 +9,7 @@ package-mode = false
 python = "^3.11"
 pytesseract = "^0.3.13"
 translators = "^5.9.2"
+opencv-python-headless = "^4.10.0.84"
 google-cloud-translate = "^3.16.0"
 django = "^5.1.1"
 graphene-django = "^3.2.2"
@@ -24,6 +25,9 @@ uvicorn = "^0.30.6"
 whitenoise = "^6.7.0"
 gunicorn = "^23.0.0"
 graphene-django-query-optimizer = "^0.10.1"
+numpy = "^2.1.1"
+pandas = "^2.2.3"
+matplotlib = "^3.9.2"
 
 
 

@@ -1,18 +1,37 @@
-FROM python:alpine
+FROM python:3.11-slim-buster
 
-# Upgrade pip
-RUN python -m pip install --upgrade pip
+# Mettre à jour le système et installer les dépendances nécessaires
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    cmake \
+    git \
+    wget \
+    unzip \
+    yasm \
+    pkg-config \
+    libswscale-dev \
+    libtbb2 \
+    libtbb-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    libavformat-dev \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Mettre à jour pip
+RUN pip install --no-cache-dir --upgrade pip
+
 WORKDIR /app
 # copy the project into the docker container
 COPY . .
 
-# Install dependencies
 RUN pip install poetry \
-	&& pip install --upgrade poetry \
     && poetry install --only main
 
+
 # Set permissions to scripts.sh
-RUN chmod +x ./entrypoint.sh
+RUN chmod +x ./scp.sh
 
 # Define the entrypoint
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["./scp.sh"]
