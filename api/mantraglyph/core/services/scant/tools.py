@@ -9,7 +9,7 @@ from operator import itemgetter
 import translators as ts
 import os
 from google.cloud import translate
-from ...shared.utils.variables import BASE_DIR
+from ...shared.utils.variables import BASE_DIR, CSV_COLORS
 
 
 directory = os.getcwd()
@@ -78,7 +78,7 @@ def getColorName(image, position):
     G = int(G)
     R = int(R)
     index = ["color", "color_name", "hex", "R", "G", "B"]
-    csv = pd.read_csv(f"{BASE_DIR}\\mantraglyph\\core\\assets\\csv\\colors.csv", names=index, header=None)
+    csv = pd.read_csv(CSV_COLORS, names=index, header=None)
     minimum = 10000
     for i in range(len(csv)):
         d = abs(R - int(csv.loc[i, "R"])) + abs(G -
@@ -275,8 +275,6 @@ def applyTranslations(image, sentence_to_word_list, aBcD_list, font_path, text_c
         x = aBcD_list[count][0]
         y = aBcD_list[count][1] + 6
         ab = aBcD_list[count][8]
-        yb = aBcD_list[count][5]
-        bd = aBcD_list[count][9]
         index = 0
         center = 0
         text = sentence[index]
