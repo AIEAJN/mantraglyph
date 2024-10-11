@@ -312,4 +312,4 @@ def applyTranslations(image, sentence_to_word_list, aBcD_list, font_path, text_c
                         y += font_size
         count += 1
 
-    image.show()
+    return image
