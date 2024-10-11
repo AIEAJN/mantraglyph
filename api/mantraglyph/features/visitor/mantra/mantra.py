@@ -7,7 +7,7 @@ from ....core.shared import types as types
 from ....core.services.image import image as image_service
 from ....core.services.scant import tools as scant_tools_service
 from ....core.shared.utils.variables import WURMIC_BRAVO
-
+import hashlib
 
         
 # 
@@ -61,6 +61,10 @@ class CreateMantraFeature(graphene.Mutation):
         logging.warning("ici15")
         # logging.warning(sentence_to_word, translate_bubble)
         mantra = scant_tools_service.applyTranslations(image, sentence_to_word, coord, WURMIC_BRAVO, text_color)
-        # mantra.save()
+        hash = hashlib.sha256("mantra")
+        print(
+            hash
+        )
+        mantra.save(hash)
         logging.warning("ici16")
         return None
