@@ -4,7 +4,11 @@ import numpy as np
 import firebase_admin
 from firebase_admin import storage
 import logging
-
+import re
+text  = "/app/api/mantraglyph/core/assets/mantras/4ABDPPJ.jpg"
+pattern = r"\w{7}.jpg"
+result = re.search(pattern, text)
+print(result.group(0).removesuffix(".jpg"))
 def open_image_from_url(url: str):
     response = requests.get(url)
     img_data = response.content
@@ -16,8 +20,10 @@ def open_image_from_url(url: str):
 
 def save_image_in_firebase(image_path: str) -> str:
     bucket = storage.bucket("mantraglyph")
+    pattern = r"\w{7}.jpg"
+    reference = re.search(pattern, text).group(0).removesuffix(".jpg")
     # Créer une référence à l'image
-    blob = bucket.blob("mantra/")
+    blob = bucket.blob("mantra/"+reference)
     # Uploader l'image
     blob.upload_from_filename(image_path)
     # Rendre l'image publique ou définir des permissions spécifiques
