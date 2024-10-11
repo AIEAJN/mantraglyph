@@ -26,9 +26,10 @@ RUN python -m pip install --upgrade pip \
 ENV PATH="/usr/bin:$PATH"
 WORKDIR /app
 
+
 # copy the project into the docker container
 COPY . .
-
+RUN poetry install
 # Set permissions to entrypoint.sh
 RUN chmod +x ./entrypoint.sh
 
