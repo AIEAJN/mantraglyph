@@ -3,6 +3,7 @@ import requests
 import numpy as np
 import firebase_admin
 from firebase_admin import storage
+import logging
 
 def open_image_from_url(url: str):
     response = requests.get(url)
@@ -16,11 +17,9 @@ def open_image_from_url(url: str):
 def save_image_in_firebase(image_path: str) -> str:
     bucket = storage.bucket("mantraglyph")
     # Créer une référence à l'image
-    blob = bucket.blob("mantra")
+    blob = bucket.blob("mantra/")
     # Uploader l'image
     blob.upload_from_filename(image_path)
     # Rendre l'image publique ou définir des permissions spécifiques
     blob.make_public()
-
-    print(f'Image URL: {blob.public_url}')
-    return None
+    return blob.public_url

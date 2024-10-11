@@ -70,23 +70,27 @@ class Mantraglyph(models.Model):
         models.DO_NOTHING,
         db_column="target_langage",
         related_name="target_langage",
+        blank=True, null=True,
     )
     detected_langage = models.ForeignKey(
         Language,
         models.DO_NOTHING,
         db_column="detected_langage",
         related_name="detected_langage",
+        blank=True, null=True,
     )
     added_by = models.ForeignKey(
         User,
         models.DO_NOTHING,
         db_column="added_by",
+        blank=True, null=True,
     )
     updated_by = models.ForeignKey(
         User,
         models.DO_NOTHING,
         db_column="updated_by",
         related_name="mantraglyph_updated_by",
+        blank=True, null=True,
     )
     metadata = models.JSONField(blank=True, null=True)
     is_deleted = models.BooleanField(default=True)
