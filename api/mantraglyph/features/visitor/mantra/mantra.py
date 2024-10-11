@@ -61,6 +61,6 @@ class CreateMantraFeature(graphene.Mutation):
         logging.warning("ici15")
         # logging.warning(sentence_to_word, translate_bubble)
         mantra = scant_tools_service.applyTranslations(image, sentence_to_word, coord, WURMIC_BRAVO, text_color)
-        mantra.save()
+        # mantra.save()
         logging.warning("ici16")
         return None

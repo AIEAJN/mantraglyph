@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from . import env as env
 import datetime as dt
+import firebase_admin
+from firebase_admin import credentials
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,6 +27,11 @@ file_name = current_time + "H_Uvicorns.log"
 dir_name = str(BASE_DIR)
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.join(BASE_DIR, 'credentials.json')
+
+
+firebase_credentials = credentials.Certificate(os.path.join(BASE_DIR, 'firebase_credentials.json'))
+firebase_admin.initialize_app(firebase_credentials)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
